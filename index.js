@@ -3,12 +3,16 @@ import fileUpload from 'express-fileupload';
 import mongoose from 'mongoose';
 import userRoutes from './routes/userRoutes.js';
 import booksRoutes from './routes/bookRoutes.js';
+import dotevn from 'dotenv';
 import cors from 'cors';
 const app = express();
 const port = 5000;
 
+dotevn.config({
+  quiet: true
+});
 
-mongoose.connect('mongodb+srv://Anuj:Anuj2005@anujapi.pcejgp8.mongodb.net/BookStore')
+mongoose.connect(process.env.DB_URL)
 .then((val)=>{
     app.listen(port,()=>{
     console.log('database connected and server is running'); 
@@ -17,7 +21,9 @@ mongoose.connect('mongodb+srv://Anuj:Anuj2005@anujapi.pcejgp8.mongodb.net/BookSt
    }).catch((err)=>{ 
     console.log(err);
   })
-app.use(cors());
+app.use(cors({
+  origin:[]
+}));
 app.use(express.json());
 app.use(fileUpload({
   limits: { fileSize: 5 * 1024 * 1024 },

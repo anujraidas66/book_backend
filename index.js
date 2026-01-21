@@ -8,9 +8,7 @@ import cors from 'cors';
 const app = express();
 const port = 5000;
 
-dotevn.config({
-  quiet: true
-});
+dotevn.config({});
 
 mongoose.connect(process.env.DB_URL)
 .then((val)=>{

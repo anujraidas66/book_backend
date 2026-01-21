@@ -32,7 +32,7 @@ mongoose.connect(process.env.DB_URL)
   
 
 app.use(cors({
-  origin:[]
+  origin:['https://online-bookstore-theta.vercel.app/','http://localhost:5173']
 }));
 app.use(express.json());
 app.use(fileUpload({

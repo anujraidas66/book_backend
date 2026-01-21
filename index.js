@@ -19,6 +19,18 @@ mongoose.connect(process.env.DB_URL)
    }).catch((err)=>{ 
     console.log(err);
   })
+
+
+  app.get('/', (req, res) => {
+  return res.status(200).json({
+    status: 'success',
+    message: 'server is running'
+  })  
+  })
+
+
+  
+
 app.use(cors({
   origin:[]
 }));

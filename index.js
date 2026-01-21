@@ -3,14 +3,14 @@ import fileUpload from 'express-fileupload';
 import mongoose from 'mongoose';
 import userRoutes from './routes/userRoutes.js';
 import booksRoutes from './routes/bookRoutes.js';
-import dotevn from 'dotenv';
 import cors from 'cors';
 const app = express();
 const port = 5000;
 
-dotevn.config();
 
-mongoose.connect(process.env.DB_URL)
+app.use(cors());
+
+mongoose.connect('mongodb+srv://Anuj:Anuj2005@anujapi.pcejgp8.mongodb.net/BookStore')
 .then((val)=>{
     app.listen(port,()=>{
     console.log('database connected and server is running'); 
@@ -29,11 +29,7 @@ mongoose.connect(process.env.DB_URL)
   })
 
 
-  
 
-app.use(cors({
-  origin:['https://online-bookstore-theta.vercel.app/','http://localhost:5173']
-}));
 app.use(express.json());
 app.use(fileUpload({
   limits: { fileSize: 5 * 1024 * 1024 },

@@ -4,18 +4,16 @@ import mongoose from 'mongoose';
 import userRoutes from './routes/userRoutes.js';
 import booksRoutes from './routes/bookRoutes.js';
 import cors from 'cors';
-import dotenv from 'dotenv'
+// import dotenv from 'dotenv'
 const app = express();
 
 const port = 5000;
 
-dotenv.config();
+// dotenv.config();
 
-app.use(cors({
-  origin:[]
-}));
+app.use(cors());
 
-mongoose.connect(process.env.MONGO_URL)
+mongoose.connect('mongodb+srv://Anuj:Anuj2005@anujapi.pcejgp8.mongodb.net/BookStore')
 .then((val)=>{
     app.listen(port,()=>{
     console.log('database connected and server is running'); 

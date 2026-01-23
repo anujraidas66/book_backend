@@ -5,12 +5,16 @@ import userRoutes from './routes/userRoutes.js';
 import booksRoutes from './routes/bookRoutes.js';
 import cors from 'cors';
 const app = express();
+import dotenv from 'dotenv'
 const port = 5000;
 
+dotenv.config();
 
-app.use(cors());
+app.use(cors({
+  origin:['https://online-bookstore-frontend-m7j0nsab0.vercel.app','http://localhost:5173']
+}));
 
-mongoose.connect('mongodb+srv://Anuj:Anuj2005@anujapi.pcejgp8.mongodb.net/BookStore')
+mongoose.connect(process.env.DB_URL)
 .then((val)=>{
     app.listen(port,()=>{
     console.log('database connected and server is running'); 
